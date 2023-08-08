@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
@@ -54,4 +55,18 @@ public class SampleController {
         log.info(todoDTO);
         model.addAttribute("message", "Hello Spring project!");
     }
+
+    // ex5으로 들어가고 redirect로 해서 ex6으로 가게 됨
+    @GetMapping("/ex5")
+    public String ex5(RedirectAttributes redirectAttributes){
+        // 객체로 처리하겠다. RESPONCE에 추가하는 작업
+        redirectAttributes.addAttribute("name", "AACCCDDD");
+        redirectAttributes.addFlashAttribute("result", "success");
+        // 원하는 곳으로 이동
+        return "redirect:/ex6";
+    }
+    @GetMapping("/ex6")
+    public void ex6(){}
+
+
 }
