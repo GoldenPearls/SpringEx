@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+
 @Controller //스프링 MVC에서 컨트롤러 역할, 스프링의 빈(Bean)으로 등록
 @Log4j2 //Lombok 라이브러리에서 제공하는 어노테이션으로, 로깅(loggin) 기능을 자동으로 구현해주는 기능을 제공
 public class SampleController {
@@ -28,5 +30,12 @@ public class SampleController {
         log.info("ex2.....");
         log.info("name : "+name);
         log.info("age : "+age);
+    }
+
+    // 날자값이 문자열로 들어왔을 떄 LocalDate로 알아서 변환해주기 위해 LocalDateFormatter
+    @GetMapping("/ex3")
+    public void ex3(LocalDate dueDate){
+        log.info("ex3.....");
+        log.info(dueDate);
     }
 }
