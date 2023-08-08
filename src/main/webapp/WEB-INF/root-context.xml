@@ -6,6 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
 http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
+    <!--root-context는 Applicationcontext-->
     <!--데이터 소스 등록-->
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
@@ -29,6 +30,8 @@ http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-sprin
     <!--세션에다가 connection을 연결해주겠다 = sqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+<!--        classpath는 resource의 경로 mappers라는 폴더 밑에 ** : 모든 폴더-->
+        <property name="mapperLocations" value="classpath:/mappers/**/*.xml"/>
     </bean>
 
     <!--timeMapper와 연결해줘, 빈에 등록할거야의 의미-->
