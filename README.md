@@ -1,5 +1,6 @@
-### 🌠 의존성 분리, 코드의 간결화 Spring 마스터하기
+### 🌠 Spring 초보자 타이틀 떼기
 - intellj를 통한 spring 공부 
+- 초보자를 벗어나자..
 
 ### 🌈 Rule ૮꒰ ྀི〃´꒳`〃꒱ა
 - 그 날 배운 거는 수업도중 바뀔 때마다 Commit and Push 
