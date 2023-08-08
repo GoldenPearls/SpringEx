@@ -1,5 +1,6 @@
 package com.multicampus.springex.controller;
 
+import com.multicampus.springex.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -24,9 +25,10 @@ public class TodoController {
         log.info("GET todo_register.....");
     }
 
-    // register은 post와 get방식 따로 따로
+    // register은 post와 get방식 따로 따로, 객체를 알아서 넣어줌
     @PostMapping("/register")
-    public void registerPost(){
+    public void registerPost(TodoDTO todoDTO){
         log.info("Post todo register");
+        log.info(todoDTO);
     }
 }
