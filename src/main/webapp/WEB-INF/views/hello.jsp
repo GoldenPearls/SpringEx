@@ -2,12 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>FrontController가 응답</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
+<h1>FrontController가 응답합니다.</h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
 </body>
 </html>

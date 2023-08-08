@@ -13,7 +13,7 @@
     <!--/resources 경로로 들어오는 요청은 정적파일을 요구하는 것으로 스프링 MVC에서 처리하지 않는다는 의미-->
     <mvc:resources mapping="/resources/**" location="/resources/"></mvc:resources>
 
-    <!--3. InternalResourceViewResolver : 스프링 MVC에서 제공하는 뷰를 어떻게 결정할 것인지 설정하는 담당하는 빈(객체)-->
+    <!--3. InternalResourceViewResolver 클래스 : 스프링 MVC에서 제공하는 뷰를 어떻게 결정할 것인지 설정하는 담당하는 빈(객체)-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--prefix : MVC에서 사용했던 WEB-INF/view 경로-->
         <property name="prefix" value="/WEB-INF/views/"></property>
@@ -21,6 +21,7 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <!--자동으로 빈 설정해줘라-->
     <context:component-scan base-package="com.multicampus.springex.controller"/>
 
    <!-- <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
