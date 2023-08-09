@@ -1,11 +1,14 @@
 package com.multicampus.springex.mapper;
 
+import com.multicampus.springex.domain.TodoVO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.time.LocalDate;
 
 @Log4j2
 @ExtendWith(SpringExtension.class)
@@ -18,6 +21,15 @@ public class TodoMapperTests {
     @Test
     public void testGetTime(){
         log.info(todoMapper.getTime());
+    }
+
+    @Test
+    public void testInsert(){
+        TodoVO todoVO = TodoVO.builder()
+                .title("스프링 TodoTest")
+                .dueDate(LocalDate.of(2023, 8, 9))
+                .writer("user1").build();
+        todoMapper.insert(todoVO);
     }
 
 }
