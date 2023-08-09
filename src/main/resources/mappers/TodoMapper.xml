@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multicampus.springex.mapper.TodoMapper">
+
+    <!--어노테이션이 아니라 xml 파일로 sql 작성-->
+    <!--TodoMapperjava에 있는 메소드 명이랑 select id가 같아야 함-->
+    <select id="getTime" resultType="string">
+        select now()
+    </select>
+
+</mapper>
+
