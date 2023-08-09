@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -66,6 +68,15 @@
                                </div>
                            </div>
                        </form>
+                        <script>
+                            const serverVaildResult ={}
+                            //TodoController의 에러
+                            <c:forEach items="${errors}" var="error">
+                            // 객체에다가 넣기
+                            serverVaildResult['${error.getField()}'] ='${error.defaultMessage}'
+                            </c:forEach>
+                            console.log(serverVaildResult)
+                        </script>
                     </div>
                 </div>
             </div>
