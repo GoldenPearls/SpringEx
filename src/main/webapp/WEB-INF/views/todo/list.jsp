@@ -62,7 +62,7 @@
                                 <tr>
                                     <th scope="row"><c:out value="${dto.tno}"/></th>
                                     <td>
-                                        <a href="" class="text-decoration-none" data-tno="${dto.tno}" >
+                                        <a href="/todo/read?tno=${dto.tno}" class="text-decoration-none" data-tno="${dto.tno}" >
                                             <c:out value="${dto.title}"/>
                                         </a>
                                     </td>

@@ -83,6 +83,16 @@
                                 <button type="button" class="btn btn-secondary">List</button>
                             </div>
                         </div>
+                        <script>
+                            /*수정에 관련된 기능인데 tno을 담아서 보냄*/
+                            /*위에 버튼 클래스 이름에다가 listener을 달아서 이벤트 처리*/
+                            document.querySelector(".btn-primary").addEventListener("click",function (e){
+                                self.location = "/todo/modify?tno="+${dto.tno} // /todo/modify?tno=3이랑 같은 의미
+                            },false)
+                            document.querySelector(".btn-secondary").addEventListener("click", function(e){
+                            self.location = "/todo/list";
+                            },false)
+                        </script>
                     </div>
                 </div>
             </div>
