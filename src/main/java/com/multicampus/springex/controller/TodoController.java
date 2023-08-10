@@ -56,8 +56,8 @@ public class TodoController {
        return "redirect:/todo/list";
     }
 
-    // HTTP GET 요청을 처리하며, "/read" 경로로 요청이 들어올 때 호출
-    @GetMapping("/read")
+    // HTTP GET 요청을 처리하며, "/read" "/modify" 경로로 요청이 들어올 때 호출
+    @GetMapping({"/read", "/modify"})
     // model은 뷰와 컨트롤러 간의 데이터 교환을 위한 객체
     public void read(Long tno, Model model){
         // todoService라는 서비스 객체를 통해 tno에 해당하는 할 일 데이터를 조회하는 역할
