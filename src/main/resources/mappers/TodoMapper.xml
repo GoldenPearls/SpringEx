@@ -23,5 +23,9 @@
     <select id="selectAll" resultType="com.multicampus.springex.domain.TodoVO">
         select * from tb1_todo order by tno desc
     </select>
+
+    <select id="selectOne" resultType="com.multicampus.springex.domain.TodoVO">
+        select * from tb1_todo where tno =#{tno}
+    </select>
 </mapper>
 

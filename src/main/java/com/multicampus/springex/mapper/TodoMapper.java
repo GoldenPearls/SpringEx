@@ -13,5 +13,8 @@ public interface TodoMapper {
     // 가장 최근에 등록된 글 순서대로 tb1_todo 테이블의 모든 row들을 가져온다. todolist_selectall 작업
     List<TodoVO> selectAll();
 
+    // 목록 1개씩 상세보기
+    TodoVO selectOne(Long tno);
+
 
 }

@@ -45,4 +45,15 @@ public class TodoServiceImpl implements TodoService{
                 .collect(Collectors.toList());
         return dtoList;
     }
+
+    @Override
+    public TodoDTO getOne(Long tno) {
+        // TodoService의 실제 동작
+        //todoVO ==> todoDTO 변환
+        TodoVO todoVO = todoMapper.selectOne(tno);
+        TodoDTO todoDTO = modelMapper.map(todoVO, TodoDTO.class);
+        return todoDTO;
+    }
+
+
 }

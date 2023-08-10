@@ -55,4 +55,15 @@ public class TodoController {
         todoService.register(todoDTO);
        return "redirect:/todo/list";
     }
+
+    // HTTP GET 요청을 처리하며, "/read" 경로로 요청이 들어올 때 호출
+    @GetMapping("/read")
+    // model은 뷰와 컨트롤러 간의 데이터 교환을 위한 객체
+    public void read(Long tno, Model model){
+        // todoService라는 서비스 객체를 통해 tno에 해당하는 할 일 데이터를 조회하는 역할
+        TodoDTO todoDTO = todoService.getOne(tno);
+        log.info(todoDTO);
+        // 조회한 할 일 데이터를 model에 "dto"라는 이름으로 추가합니다. 이렇게 모델에 데이터를 추가하면 해당 데이터는 뷰로 전달되어 뷰에서 사용가능
+        model.addAttribute("dto", todoDTO);
+    }
 }
