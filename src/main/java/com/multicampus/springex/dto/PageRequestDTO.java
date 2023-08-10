@@ -18,16 +18,17 @@ import java.util.Arrays;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PageRequestDTO {
+
     @Builder.Default
-    @Min(value=1)
+    @Min(value = 1)
     @Positive
     private int page = 1; //page number 페이지 번호
 
-    @Builder.Default// 글을 10개씩 가지고 옴
+    @Builder.Default //글을 10개씩 가지고 옴
     @Min(value = 10)
-    @Max(value=100)
+    @Max(value = 100)
     @Positive
-    private int size = 10; //1 page per data number 한 페이지당 개수
+    private int size = 10; // 1 page per data number 한 페이지당 개수
 
     private String link;
 
@@ -41,9 +42,24 @@ public class PageRequestDTO {
 
     private LocalDate to;
 
+
     public int getSkip(){
-        return (page-1)*10;
+
+        return (page -1) * 10;
     }
+
+//    public String getLink() {
+//        if(link == null){
+//            StringBuilder builder = new StringBuilder();
+//
+//            builder.append("page=" + this.page);
+//
+//            builder.append("&size=" + this.size);
+//            link = builder.toString();
+//        }
+//        return link;
+//    }
+
     public String getLink() {
         StringBuilder builder = new StringBuilder();
 

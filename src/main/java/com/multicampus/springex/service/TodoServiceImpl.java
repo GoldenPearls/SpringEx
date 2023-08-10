@@ -34,27 +34,6 @@ public class TodoServiceImpl implements TodoService{
         todoMapper.insert(todoVO);
     }
 
-    @Override
-    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
-
-
-        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
-        List<TodoDTO> dtoList = voList.stream()
-                .map(vo -> modelMapper.map(vo, TodoDTO.class))
-                .collect(Collectors.toList());
-
-        int total = todoMapper.getCount(pageRequestDTO);
-
-        PageResponseDTO<TodoDTO> pageResponseDTO = PageResponseDTO.<TodoDTO>withAll()
-                .dtoList(dtoList)
-                .total(total)
-                .pageRequestDTO(pageRequestDTO)
-                .build();
-
-        return pageResponseDTO;
-
-    }
-
     // 구현 객체이기 때문에 TodoService가 바뀌면 바뀜
     // 모든 할 일 항목 조회
     /*@Override
@@ -87,6 +66,27 @@ public class TodoServiceImpl implements TodoService{
     public void modify(TodoDTO todoDTO) {
         TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
         todoMapper.update(todoVO);
+    }
+
+    @Override
+    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
+
+
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        List<TodoDTO> dtoList = voList.stream()
+                .map(vo -> modelMapper.map(vo, TodoDTO.class))
+                .collect(Collectors.toList());
+
+        int total = todoMapper.getCount(pageRequestDTO);
+
+        PageResponseDTO<TodoDTO> pageResponseDTO = PageResponseDTO.<TodoDTO>withAll()
+                .dtoList(dtoList)
+                .total(total)
+                .pageRequestDTO(pageRequestDTO)
+                .build();
+
+        return pageResponseDTO;
+
     }
 
 
