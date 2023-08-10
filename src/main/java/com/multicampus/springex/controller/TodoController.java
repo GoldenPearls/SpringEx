@@ -66,4 +66,12 @@ public class TodoController {
         // 조회한 할 일 데이터를 model에 "dto"라는 이름으로 추가합니다. 이렇게 모델에 데이터를 추가하면 해당 데이터는 뷰로 전달되어 뷰에서 사용가능
         model.addAttribute("dto", todoDTO);
     }
+
+    @PostMapping("/remove")
+    public String remove(Long tno, RedirectAttributes redirectAttributes){
+        log.info("---remove-process-------");
+        log.info("tno"+tno);
+        todoService.remove(tno);
+        return  "redirect:/todo/list";
+    }
 }

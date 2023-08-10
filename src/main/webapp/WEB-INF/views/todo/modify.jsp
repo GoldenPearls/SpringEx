@@ -90,14 +90,15 @@
                         </div>
                         </form>
                         <script>
-                            /*수정에 관련된 기능인데 tno을 담아서 보냄*/
-                            /*위에 버튼 클래스 이름에다가 listener을 달아서 이벤트 처리*/
-                            document.querySelector(".btn-primary").addEventListener("click",function (e){
-                                self.location = "/todo/modify?tno="+${dto.tno} // /todo/modify?tno=3이랑 같은 의미
-                            },false)
-                            document.querySelector(".btn-secondary").addEventListener("click", function(e){
-                            self.location = "/todo/list";
-                            },false)
+                            /*Remove 버튼 처리 : form 태그 안에 action을 조정하는 방식으로 처리*/
+                            /*객체 선택*/
+                            const formObj = document.querySelector(".btn-danger").addEventListener("click", function (e) {
+                                e.preventDefault() /*기본적으로 정의된 이벤트를 작동하지 못하도록 막는 메서드*/
+                                e.stopPropagation() /*DOM 특징으로 부모와 자식간에 이벤트가 전파현상 버블링과 캡처링이라는 현상을 방지하기 위함*/
+                                formObj.action ="/todo/remove"
+                                formObj.method="post"
+                                formObj.submit()
+                            }, false);
                         </script>
                     </div>
                 </div>

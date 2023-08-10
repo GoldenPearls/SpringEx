@@ -27,5 +27,13 @@
     <select id="selectOne" resultType="com.multicampus.springex.domain.TodoVO">
         select * from tb1_todo where tno =#{tno}
     </select>
+
+    <delete id="delete">
+        delete * from tb1_todo where tno=#{tno}
+    </delete>
+
+    <update id="update">
+        update tb1_todo set title=#{title}, dueDate=#{dueDate}, finished=#{finished} where tno=${tno}
+    </update>
 </mapper>
 

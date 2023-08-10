@@ -16,5 +16,10 @@ public interface TodoMapper {
     // 목록 1개씩 상세보기
     TodoVO selectOne(Long tno);
 
+    //delete
+    void delete(Long tno);
+
+    // 수정
+    void update(TodoVO todoVO);
 
 }
