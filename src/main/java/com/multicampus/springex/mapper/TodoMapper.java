@@ -1,6 +1,7 @@
 package com.multicampus.springex.mapper;
 
 import com.multicampus.springex.domain.TodoVO;
+import com.multicampus.springex.dto.PageRequestDTO;
 
 import java.util.List;
 
@@ -21,5 +22,10 @@ public interface TodoMapper {
 
     // 수정
     void update(TodoVO todoVO);
+
+    // 한 페이지씩 처리하는 작업 필요
+    List<TodoVO> selectList(PageRequestDTO pageRequestDTO);
+
+    int getCount(PageRequestDTO pageRequestDTO);
 
 }

@@ -28,6 +28,16 @@
         select * from tb1_todo where tno =#{tno}
     </select>
 
+    <!--MyBATIS 경우 기본적으로 getXXX, setXXX을 통해 동작하므로, #{skip}, #{size}-->
+    <select id="selectList" resultType="com.multicampus.springex.domain.TodoVO">
+        select * from tb1_todo order by tno desc limit #{skip}, #{size}
+    </select>
+
+    <!--getCount 연결해주기, 전체 개수 반환-->
+    <select id="getCount" resultType="int">
+        select count(tno) from tb1_todo
+    </select>
+
     <delete id="delete">
         DELETE FROM tb1_todo WHERE tno = #{tno}
     </delete>

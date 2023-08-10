@@ -28,7 +28,7 @@ public class TodoController {
     public void list(Model model){
         log.info("todo_list");
         // TodoService에서 리턴한 List<TodoDTO> getAll();을 model에다가 담기
-        model.addAttribute("dtoList", todoService.getAll());
+        //model.addAttribute("dtoList", todoService.getList());
         //model 'dtoList' 이름으로 목록 데이터가 담겨있다. => list.jsp가 처리해줘야 함
     }
 

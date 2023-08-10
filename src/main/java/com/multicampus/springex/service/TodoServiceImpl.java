@@ -1,6 +1,8 @@
 package com.multicampus.springex.service;
 
 import com.multicampus.springex.domain.TodoVO;
+import com.multicampus.springex.dto.PageRequestDTO;
+import com.multicampus.springex.dto.PageResponseDTO;
 import com.multicampus.springex.dto.TodoDTO;
 import com.multicampus.springex.mapper.TodoMapper;
 import lombok.RequiredArgsConstructor;
@@ -32,9 +34,30 @@ public class TodoServiceImpl implements TodoService{
         todoMapper.insert(todoVO);
     }
 
+    @Override
+    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
+
+
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        List<TodoDTO> dtoList = voList.stream()
+                .map(vo -> modelMapper.map(vo, TodoDTO.class))
+                .collect(Collectors.toList());
+
+        int total = todoMapper.getCount(pageRequestDTO);
+
+        PageResponseDTO<TodoDTO> pageResponseDTO = PageResponseDTO.<TodoDTO>withAll()
+                .dtoList(dtoList)
+                .total(total)
+                .pageRequestDTO(pageRequestDTO)
+                .build();
+
+        return pageResponseDTO;
+
+    }
+
     // 구현 객체이기 때문에 TodoService가 바뀌면 바뀜
     // 모든 할 일 항목 조회
-    @Override
+    /*@Override
     public List<TodoDTO> getAll() {
 
         // 데이터베이스에서 조회한 할일 항목을 VO에서 DTO로 변환하여 리스트로 반환하는 작업을 수행
@@ -44,7 +67,7 @@ public class TodoServiceImpl implements TodoService{
                 .map(vo-> modelMapper.map(vo, TodoDTO.class))
                 .collect(Collectors.toList());
         return dtoList;
-    }
+    }*/
 
     @Override
     public TodoDTO getOne(Long tno) {
