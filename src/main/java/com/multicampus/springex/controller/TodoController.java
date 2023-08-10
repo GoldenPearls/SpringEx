@@ -67,6 +67,21 @@ public class TodoController {
         model.addAttribute("dto", todoDTO);
     }
 
+    @PostMapping("/modify")
+    public String modify(@Valid TodoDTO todoDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()){
+            log.info("has..error");
+            redirectAttributes.addFlashAttribute("error", bindingResult.getAllErrors());
+            redirectAttributes.addAttribute("tno", todoDTO.getTno());
+            return "redirect:/todo/modify";
+        }
+        log.info(todoDTO);
+
+        todoService.modify(todoDTO);
+
+        return "redirect:/todo/list";
+    }
+
     @PostMapping("/remove")
     public String remove(Long tno, RedirectAttributes redirectAttributes){
         log.info("---remove-process-------");

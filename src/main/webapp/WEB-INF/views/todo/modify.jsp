@@ -87,18 +87,39 @@
                             </div>
                         </div>
                         </form>
-                        <script>
-                            /*Remove 버튼 처리 : form 태그 안에 action을 조정하는 방식으로 처리*/
-                            /*객체 선택*/
-                            const formObj = document.querySelector(".btn-danger").addEventListener("click", function (e) {
-                                e.preventDefault() /*기본적으로 정의된 이벤트를 작동하지 못하도록 막는 메서드*/
-                                e.stopPropagation() /*DOM 특징으로 부모와 자식간에 이벤트가 전파현상 버블링과 캡처링이라는 현상을 방지하기 위함*/
-                                formObj.action ="/todo/remove"
-                                formObj.method="post"
-                                formObj.submit()
-                            }, false);
+                            <script>
+
+                            const serverValidResult = {}
+
+                            <c:forEach items="${errors}" var="error">
+
+                            serverValidResult['${error.getField()}'] = '${error.defaultMessage}'
+
+                            </c:forEach>
+
+                            console.log(serverValidResult)
                         </script>
                     </div>
+                    <script>
+                        /*Remove 버튼 처리 : form 태그 안에 action을 조정하는 방식으로 처리*/
+                        /*객체 선택*/
+                        const formObj = document.querySelector(".btn-danger").addEventListener("click", function (e) {
+                            e.preventDefault() /*기본적으로 정의된 이벤트를 작동하지 못하도록 막는 메서드*/
+                            e.stopPropagation() /*DOM 특징으로 부모와 자식간에 이벤트가 전파현상 버블링과 캡처링이라는 현상을 방지하기 위함*/
+                            formObj.action ="/todo/remove"
+                            formObj.method="post"
+                            formObj.submit()
+                        }, false);
+
+                        document.querySelector(".btn-primary").addEventListener("click", function (e) {
+                            e.preventDefault()
+                            e.stopPropagation()
+
+                            formObj.action="/todo/modify"
+                            formObj.method ="post"
+                            formObj.submit()
+                        }, false);
+                    </script>
                 </div>
             </div>
         </div>
