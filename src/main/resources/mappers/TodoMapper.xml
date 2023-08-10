@@ -33,7 +33,7 @@
     </delete>
 
     <update id="update">
-        update tb1_todo set title=#{title}, dueDate=#{dueDate}, finished=#{finished} where tno=${tno}
+        update tb1_todo set title=#{title}, dueDate=#{dueDate}, finished=#{finished} where tno=#{tno}
     </update>
 </mapper>
 
