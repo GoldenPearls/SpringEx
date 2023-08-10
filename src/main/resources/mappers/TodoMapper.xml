@@ -29,7 +29,7 @@
     </select>
 
     <delete id="delete">
-        delete * from tb1_todo where tno=#{tno}
+        DELETE FROM tb1_todo WHERE tno = #{tno}
     </delete>
 
     <update id="update">
