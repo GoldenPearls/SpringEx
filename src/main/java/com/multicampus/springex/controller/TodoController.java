@@ -1,5 +1,6 @@
 package com.multicampus.springex.controller;
 
+import com.multicampus.springex.dto.PageRequestDTO;
 import com.multicampus.springex.dto.TodoDTO;
 import com.multicampus.springex.service.TodoService;
 import lombok.RequiredArgsConstructor;
@@ -25,11 +26,15 @@ public class TodoController {
     private final TodoService todoService;
 
     @RequestMapping("/list") //localhost:8090/todo/list
-    public void list(Model model){
+    public void list(@Valid PageRequestDTO pageRequestDTO, BindingResult bindingResult, Model model){
         log.info("todo_list");
         // TodoService에서 리턴한 List<TodoDTO> getAll();을 model에다가 담기
         //model.addAttribute("dtoList", todoService.getList());
         //model 'dtoList' 이름으로 목록 데이터가 담겨있다. => list.jsp가 처리해줘야 함
+        if(bindingResult.hasErrors()){
+            pageRequestDTO = PageRequestDTO.builder().build();
+        }
+        model.addAttribute("responseDTO", todoService.getList(pageRequestDTO));
     }
 
     //@RequestMapping(value="/register", method = RequestMethod.GET) //localhost:8090/todo/register
