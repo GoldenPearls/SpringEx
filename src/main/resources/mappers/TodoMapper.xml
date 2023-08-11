@@ -4,6 +4,34 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multicampus.springex.mapper.TodoMapper">
 
+    <sql id="search">
+        <where>
+            <if test="types != null and types.length > 0">
+                <foreach collection="types" item="type" open="(" close=") " separator=" OR ">
+                    <if test="type == 't'.toString()">
+                        title like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test="type == 'w'.toString()">
+                        writer like concat('%', #{keyword}, '%')
+                    </if>
+                </foreach>
+            </if>
+
+            <if test="finished">
+                <trim prefix="and">
+                    finished = 1
+                </trim>
+            </if>
+
+            <if test="from != null and to != null">
+                <trim prefix="and">
+                    dueDate between  #{from} and #{to}
+                </trim>
+            </if>
+        </where>
+    </sql>
+
+
     <!--어노테이션이 아니라 xml 파일로 sql 작성-->
     <!--TodoMapperjava에 있는 메소드 명이랑 select id가 같아야 함-->
     <select id="getTime" resultType="string">
@@ -30,12 +58,39 @@
 
     <!--MyBATIS 경우 기본적으로 getXXX, setXXX을 통해 동작하므로, #{skip}, #{size}-->
     <select id="selectList" resultType="com.multicampus.springex.domain.TodoVO">
-        select * from tb1_todo order by tno desc limit #{skip}, #{size}
+        select * from tb1_todo
+        <include refid="search"></include>
+        order by tno desc limit #{skip}, #{size}
     </select>
 
     <!--getCount 연결해주기, 전체 개수 반환-->
     <select id="getCount" resultType="int">
         select count(tno) from tb1_todo
+        /*이 부분을 붙히면서 끝없이 늘어나는 수를 줄일 수 있음*/
+       <where>
+        <if test="types != null and types.length > 0">
+            <foreach collection="types" item="type" open="(" close=") " separator=" OR ">
+                <if test="type == 't'.toString()">
+                    title like concat('%', #{keyword}, '%')
+                </if>
+                <if test="type == 'w'.toString()">
+                    writer like concat('%', #{keyword}, '%')
+                </if>
+            </foreach>
+        </if>
+
+        <if test="finished">
+            <trim prefix="and">
+                finished = 1
+            </trim>
+        </if>
+
+        <if test="from != null and to != null">
+            <trim prefix="and">
+                dueDate between  #{from} and #{to}
+            </trim>
+        </if>
+    </where>
     </select>
 
     <delete id="delete">
@@ -46,4 +101,3 @@
         update tb1_todo set title=#{title}, dueDate=#{dueDate}, finished=#{finished} where tno=#{tno}
     </update>
 </mapper>
-

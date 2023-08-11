@@ -46,12 +46,12 @@
                        <form action="/todo/register" method="post">
                            <div class="input-group mb-3">
                                <span class="input-group-text">Title</span>
-                               <input type="text" name="title" class="form-contro" placeholder="Title">
+                               <input type="text" name="title" class="form-control" placeholder="Title">
                            </div>
 
                                <div class="input-group mb-3">
                                    <span class="input-group-text">DueDate</span>
-                                   <input type="date" name="dueDate" class="form-contro" placeholder="Duedate">
+                                   <input type="date" name="dueDate" class="form-control" placeholder="Duedate">
                                </div>
 
                            <div class="input-group mb-3">

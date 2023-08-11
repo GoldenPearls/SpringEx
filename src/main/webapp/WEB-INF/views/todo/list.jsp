@@ -139,6 +139,14 @@
 
                     self.location =`/todo/list?page=\${num}`
                     },false)
+
+                    document.querySelector(".clearBtn").addEventListener("click", function (e){
+                        e.preventDefault()
+                        e.stopPropagation()
+
+                        self.location ='/todo/list'
+
+                    },false)
                     </script>
                 </div>
             </div>
